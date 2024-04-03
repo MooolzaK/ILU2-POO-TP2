@@ -181,7 +181,8 @@ public class TestControleursDesCas {
 		System.out.println("Achat de " + nbProduitAcheter + " menhirs sur 2");
 		nbProduitAcheter = controlAcheterProduit.acheterProduit("Obelix", 3);
 		System.out.println("Achat de " + nbProduitAcheter + " menhirs sur 3");
-		
+		nbProduitAcheter = controlAcheterProduit.acheterProduit("Obelix", 3);
+		System.out.println("Achat de " + nbProduitAcheter + " menhirs sur 3");
 
 //		Sortie Console :
 //		Cas 8 : Acheter Produit

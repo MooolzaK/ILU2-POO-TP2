@@ -27,7 +27,7 @@ public class BoundaryEmmenager {
 					break;
 
 				case 2:
-					System.out.println("Bienvenu villageois"+nomVisiteur+"\n");
+					System.out.println("Bienvenu villageois "+nomVisiteur+"\n");
 					controlEmmenager.ajouterGaulois(nomVisiteur,Clavier.entrerEntier("Quelle est votre force ? \n"));
 					break;
 
