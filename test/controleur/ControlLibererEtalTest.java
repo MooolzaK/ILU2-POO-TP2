@@ -51,6 +51,7 @@ class ControlLibererEtalTest {
 		village.installerVendeur(bonemine, "tissu", 10);
 		String[] tabBonemine = {"Bonemine","tissu","10","10"};
 		assertNotEquals(controlLibererEtal.libererEtal("Bonemine"),tabBonemine);
+		assertNull(controlLibererEtal.libererEtal("exite pas =p"));
 	}
 
 }

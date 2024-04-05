@@ -27,5 +27,28 @@ class ControlAcheterProduitTest {
 		ControlAcheterProduit controlAcheterProduit = new ControlAcheterProduit(controlVerifierIdentite,controlTrouverEtalVendeur,village);
 		assertNotNull(controlAcheterProduit, "Constructeur ne renvoie pas null");
 	}
+	
+	@Test
+	void testVerifierIdentite() {
+		
+		ControlTrouverEtalVendeur controlTrouverEtalVendeur = new ControlTrouverEtalVendeur(village);
+		ControlVerifierIdentite controlVerifierIdentite= new ControlVerifierIdentite(village);
+		ControlAcheterProduit controlAcheterProduit = new ControlAcheterProduit(controlVerifierIdentite,controlTrouverEtalVendeur,village);
+		ControlEmmenager controlEmmenager = new ControlEmmenager(village);
+		controlEmmenager.ajouterGaulois("Bonemine", 10);
+		assertTrue(controlAcheterProduit.verifierIdentite("Bonemine"));
+		assertFalse(controlAcheterProduit.verifierIdentite("Existe pas"));
+		controlEmmenager.ajouterDruide("Panoramix", 10, 1, 5);
+		assertTrue(controlAcheterProduit.verifierIdentite("Panoramix"));
+	}
 
+	
+	@Test
+	void testProduitPresent() {
+		ControlTrouverEtalVendeur controlTrouverEtalVendeur = new ControlTrouverEtalVendeur(village);
+		ControlVerifierIdentite controlVerifierIdentite= new ControlVerifierIdentite(village);
+		ControlAcheterProduit controlAcheterProduit = new ControlAcheterProduit(controlVerifierIdentite,controlTrouverEtalVendeur,village);
+		ControlEmmenager controlEmmenager = new ControlEmmenager(village);
+		ControlPrendreEtal controlPrendreEtal = new ControlPrendreEtal(controlVerifierIdentite,village);
+	}
 }
