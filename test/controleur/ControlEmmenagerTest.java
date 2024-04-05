@@ -1,58 +1,60 @@
-//assertEquals
 package controleur;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.BeforeEach;
 
 import personnages.Chef;
 import personnages.Druide;
 import personnages.Gaulois;
 
-import villagegaulois.Village;
 
-import villagegaulois.Village;
-
-import static org.junit.Assert.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import villagegaulois.Village;
 import controleur.ControlEmmenager;
 
 class ControlEmmenagerTest {
 	private Village village;
-	private Chef abraracourcix;	
-	
+	private Chef abraracourcix;
+
 	@BeforeEach
 	public void initialiserSituation() {
 		System.out.println("Initialisation...");
-		village = new Village("le village des irr�ductibles", 10, 5);
+		village = new Village("le village des irréductibles", 10, 5);
 		abraracourcix = new Chef("Abraracourcix", 10, village);
 		village.setChef(abraracourcix);
 	}
-	
+
 	@Test
 	void testControlEmmenager() {
 		ControlEmmenager controlEmmenager = new ControlEmmenager(village);
 		assertNotNull(controlEmmenager, "Constructeur ne renvoie pas null");
 	}
+
+	@Test
+	void testIsHabitant() {
+		ControlEmmenager controlEmmenager = new ControlEmmenager(village);
+		controlEmmenager.ajouterGaulois("Bonemine", 10);
+		assertTrue(controlEmmenager.isHabitant("Bonemine"));
+		assertFalse(controlEmmenager.isHabitant("Existe pas"));
+		controlEmmenager.ajouterDruide("Panoramix", 10, 1, 5);
+		assertTrue(controlEmmenager.isHabitant("Panoramix"));
+	}
+
+	@Test
 	
-	@Test
-	public void testAjouterDruide() {
+	void testAjouterDruide() {
 		ControlEmmenager controlEmmenager = new ControlEmmenager(village);
-		Druide druide = new Druide(nom, force, effetPotionMin, effetPotionMax);
-		village.ajouterHabitant(druide);
-
-	}
-	
-	@Test
-	public void testAjouterGaulois() {
-		ControlEmmenager controlEmmenager = new ControlEmmenager(village);
-		Gaulois gaulois = new Gaulois(nom, force);
-		village.ajouterHabitant(gaulois);
+		controlEmmenager.ajouterDruide("Panoramix", 10, 1, 5);
+		// pas de vérification
 	}
 
 	@Test
-	public boolean testIsHabitant() {
+	void testAjouterGaulois() {
 		ControlEmmenager controlEmmenager = new ControlEmmenager(village);
-
+		controlEmmenager.ajouterGaulois("Bonemine", 10);
+		// pas de vérification
 	}
+
 }
